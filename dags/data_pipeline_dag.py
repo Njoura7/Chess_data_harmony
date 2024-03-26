@@ -1,3 +1,5 @@
+
+
 import os
 import logging
 import berserk
@@ -19,7 +21,7 @@ S3_BUCKET = 'njr-astrosdk'
     },
     tags=["ETL", "chess", "harmony", "data-pipeline"]
 ) 
-def chess_data_harmony_dag():
+def data_pipeline_dag():
 
     @task()
     def extract_data():
@@ -77,5 +79,5 @@ def chess_data_harmony_dag():
 
     # Correctly define task dependencies
     extract_data() >> transform_data() >> load_to_s3()
+    data_pipeline_dag = data_pipeline_dag()
 
-# Remove the unnecessary call to chess_data_harmony_dag()
